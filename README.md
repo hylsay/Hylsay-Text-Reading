@@ -1,4 +1,5 @@
 # article-reading
+![avatar](https://cdn.aoaoao.info/wp-content/uploads/2020/09/1599378397942-1024x825.jpg)
 ## 插件介绍：
 
 本插件是基于百度语音合成开发，需要自行申请百度语音合成APIkey，地址：http://ai.baidu.com/tech/speech/
