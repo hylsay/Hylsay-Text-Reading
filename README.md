@@ -1,9 +1,9 @@
 # article-reading
-插件介绍：
+## 插件介绍：
 
 本插件是基于百度语音合成开发，需要自行申请百度语音合成APIkey，地址：http://ai.baidu.com/tech/speech/
 
-插件设置：
+## 插件设置：
 
 1.阅读范围。默认是article，如果不想阅读标题等信息，请填写正文div标签，例如：.entry-content。
 
