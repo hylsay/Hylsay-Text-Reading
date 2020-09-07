@@ -95,8 +95,8 @@ jQuery(function($) {
         getTextArray: function() {
             if (baiduAudio.tokenData.access_token) {
                 var result = [];
-                var newDom = $('article '+baiduAudio.tokenData.yuedu_posttag).clone();
-                newDom.find('#baiduAudioPlayer,iframe,[anti],[copy],pre,img,table,.modal,.donation cf,'+baiduAudio.tokenData.yuedu_pingbitag).remove();
+                var newDom = $('article ' + baiduAudio.tokenData.yuedu_posttag).clone();
+                newDom.find('#baiduAudioPlayer,iframe,[anti],[copy],pre,img,table,.modal,.donation cf,' + baiduAudio.tokenData.yuedu_pingbitag).remove();
                 var text = '';
                 $(newDom).find('div').each(function() {
                     $(this).append('。')
