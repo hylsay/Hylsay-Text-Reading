@@ -3,7 +3,7 @@
 Plugin Name: 文章阅读插件
 Plugin URI: http://aoaoao.info
 Description: 文章阅读插件，瞬间让您的网站变成一个会说话的网站。
-Version: 1.0
+Version: 1.1.0
 Author: 贼冷的冰雨
 Author URI: http://aoaoao.info
 */
