@@ -1,28 +1,11 @@
 <?php
 /*
-Plugin Name: 文章阅读插件
+Plugin Name: BaiduAudio
 Plugin URI: http://aoaoao.info
 Description: 文章阅读插件，瞬间让您的网站变成一个会说话的网站。
 Version: 1.1.0
-Author: 贼冷的冰雨
+Author: hylsay
 Author URI: http://aoaoao.info
-*/
-
-/*  Copyright 2020  作者名:hylsay  (email : 891281040@qq.com)
-
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 function admin_mycss() {
