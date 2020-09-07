@@ -1,0 +1,39 @@
+#baiduAudioPlayer {
+	display: inline-flex;
+	justify-content: center;
+	padding: 5px 2px 5px 12px;
+	background: #20a0ff;
+	color: #fff;
+	border-radius: 100px;
+	margin-bottom: 10px;
+}
+
+#baiduAudioPlayer i {
+	cursor: pointer;
+	font-size: 26px;
+	line-height: 22px;
+	width: 0;
+	margin: 0;
+	transform: scale(0);
+	visibility: hidden;
+	opacity: 0;
+	transition: .5s
+}
+
+#baiduAudioPlayer i.active:hover {
+	opacity: 1;
+	transition: .25s
+}
+
+#baiduAudioPlayer .decoration {
+	line-height: 22px;
+	margin-right: 5px
+}
+
+#baiduAudioPlayer i.active {
+	width: 26px;
+	margin-left: 3px;
+	transform: scale(1);
+	opacity: .6;
+	visibility: visible
+}
