@@ -1,4 +1,4 @@
-# article-reading
+# baiduAudio（文章阅读插件）
 ![avatar](https://cdn.aoaoao.info/wp-content/uploads/2020/09/1599378397942-1024x825.jpg)
 ## 插件介绍：
 
