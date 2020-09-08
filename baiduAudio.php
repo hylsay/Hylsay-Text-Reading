@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: BaiduAudio
+Plugin Name: Hylsay Text Reading
 Plugin URI: https://aoaoao.info/841.html
 Description: 文章阅读插件，瞬间让您的网站变成一个会说话的网站。
 Version: 1.1.0

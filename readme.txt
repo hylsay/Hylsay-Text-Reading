@@ -1,4 +1,4 @@
-=== 文章阅读插件 ===
+=== Hylsay Text Reading ===
 Contributors: 
 Donate link: 
 Tags: 文章阅读, 百度语音合成

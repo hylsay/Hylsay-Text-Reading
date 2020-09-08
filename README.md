@@ -1,4 +1,4 @@
-# 文章阅读插件（baiduAudio）
+# 文章阅读插件（Hylsay Text Reading）
 ![avatar](https://cdn.aoaoao.info/wp-content/uploads/2020/09/1599378397942-1024x825.jpg)
 ## 插件介绍：
 
