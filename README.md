@@ -1,5 +1,5 @@
 # 文本阅读插件（Hylsay Text Reading）
-![Hylsay Text Reading](https://cdn.aoaoao.info/wp-content/uploads/2020/09/1599378397942-1024x825.jpg)
+![Hylsay Text Reading](https://github.com/hylsay/Hylsay-Text-Reading/blob/master/asset/screenshot-1.png)
 ## 插件介绍：
 
 本插件是基于百度语音合成开发，需要自行申请百度语音合成APIkey，地址：http://ai.baidu.com/tech/speech/
