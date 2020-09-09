@@ -2,7 +2,7 @@
 /*
 Plugin Name: Hylsay Text Reading
 Plugin URI: https://aoaoao.info/hylsay-text-reading
-Description: 文本阅读插件，瞬间让您的网站变成一个会说话的网站。
+Description: A plug-in that can read
 Version: 1.1.0
 Author: hylsay
 Author URI: http://aoaoao.info
