@@ -3,7 +3,7 @@ jQuery(function($) {
         stopped: true,
         getToken: function() {
             $.ajax({
-                url: "/wp-json/baiduaudio/get_baiduAudio_token/",
+                url: "/wp-json/hylsaytextreading/hylsay_text_reading_get_baiduAudio_token/",
                 type: 'GET',
                 dataType: 'json',
             }).done(function(data) {

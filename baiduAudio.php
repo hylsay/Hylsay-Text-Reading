@@ -8,16 +8,16 @@ Author: hylsay
 Author URI: http://aoaoao.info
 */
 
-function admin_mycss() {
+function hylsay_text_reading_admin_mycss() {
     echo '<style type="text/css">
     .form-table th {
 		font-weight:400;
 	}
     </style>';
  }
-add_action('admin_head', 'admin_mycss');
+add_action('admin_head', 'hylsay_text_reading_admin_mycss');
 
-class MyBaiduAudioPlugin {
+class HylsayTextReadingPlugin {
 	private $baiduaudio_options;
 
 	public function __construct() {
@@ -191,22 +191,29 @@ class MyBaiduAudioPlugin {
 
 }
 if ( is_admin() )
-	$baiduaudio = new MyBaiduAudioPlugin();
+	$baiduaudio = new HylsayTextReadingPlugin();
 
 
-function add_baiduAudio_js() {
-	echo '<script type="text/javascript" src="' . plugins_url('baiduAudio.js', __FILE__) . '"></script>';
-	echo '<link rel="stylesheet" type="text/css" href="' . plugins_url('baiduAudio.css', __FILE__) . '"/>';
-	
+function add_hylsay_text_reading_js($hook) {
+ 
+    // create my own version codes
+    $my_js_ver  = date("ymd-Gis", filemtime( plugin_dir_path( __FILE__ ) . 'baiduAudio.js' ));
+    $my_css_ver = date("ymd-Gis", filemtime( plugin_dir_path( __FILE__ ) . 'baiduAudio.css' ));
+     
+    // 
+    wp_enqueue_script( 'baiduAudio_js', plugins_url( 'baiduAudio.js', __FILE__ ), array(), $my_js_ver );
+    wp_register_style( 'baiduAudio_css',    plugins_url( 'baiduAudio.css',    __FILE__ ), false,   $my_css_ver );
+    wp_enqueue_style ( 'baiduAudio_css' );
+ 
 }
-add_action('wp_footer', 'add_baiduAudio_js');
+add_action('wp_enqueue_scripts', 'add_hylsay_text_reading_js');
 
 //注册一个路由
 add_action('rest_api_init', function () {
-	register_rest_route('baiduaudio', '/get_baiduAudio_token/', array('methods' => 'get', 'callback' => 'get_baiduAudio_token',));
+	register_rest_route('hylsaytextreading', '/hylsay_text_reading_get_baiduAudio_token/', array('methods' => 'get', 'callback' => 'hylsay_text_reading_get_baiduAudio_token',));
 });
 
-function get_cache($name) {
+function hylsay_text_reading_get_cache($name) {
     $allCache = get_option('pd_cache');
     if (!$allCache) {
         return false;
@@ -224,7 +231,7 @@ function get_cache($name) {
     }
 }
 
-function set_cache($name, $data, $expire) {
+function hylsay_text_reading_set_cache($name, $data, $expire) {
     $allCache = get_option('pd_cache');
     if (!$allCache) {
         $allCache = array();
@@ -233,17 +240,19 @@ function set_cache($name, $data, $expire) {
     update_option('pd_cache', $allCache);
 }
 
-function get_baiduAudio_token() {
-	$result = get_cache('baidu_Audio_token');
+function hylsay_text_reading_get_baiduAudio_token() {
+	$result = hylsay_text_reading_get_cache('baidu_Audio_token');
 	$baiduaudio_options = get_option( 'baiduaudio_option_name' );
 	if ($result == false) {
 		$apiKey = $baiduaudio_options['baidu_apiKey'];
 		$secretKey = $baiduaudio_options['baidu_secretKey'];
 		$api = 'https://openapi.baidu.com/oauth/2.0/token?grant_type=client_credentials&client_id=' . $apiKey . '&client_secret=' . $secretKey;
-		$result = file_get_contents($api);
-		$result = json_decode($result, true);
+		// $result = file_get_contents($api);
+		$api = wp_remote_get( $api );
+		$result = wp_remote_retrieve_body( $response );
+		// $result = json_decode($result, true);
 		if ($result['access_token']) {
-			set_cache('baidu_Audio_token', $result, $result[expires_in] * 0.9);
+			hylsay_text_reading_set_cache('baidu_Audio_token', $result, $result[expires_in] * 0.9);
 		}
 	}
 	
@@ -254,12 +263,12 @@ function get_baiduAudio_token() {
 	return $return;
 }
 
-function pf_baidu_ai_audio_content($content) {
+function hylsay_text_reading_baidu_ai_audio_content($content) {
 	
 	if (is_single()) {
 		return '<div class="baiduAudioWrap"></div>' . $content;
 	}
 	return $content;
 }
-add_filter("the_content", "pf_baidu_ai_audio_content");
+add_filter("the_content", "hylsay_text_reading_baidu_ai_audio_content");
 
