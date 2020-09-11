@@ -31,6 +31,7 @@
 
 #baiduAudioPlayer i.active {
 	width: 26px;
+	font-size: 22px;
 	margin-left: 3px;
 	transform: scale(1);
 	opacity: .6;
