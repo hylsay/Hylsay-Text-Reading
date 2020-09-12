@@ -247,10 +247,8 @@ function hylsay_text_reading_get_baiduAudio_token() {
 		$apiKey = $baiduaudio_options['baidu_apiKey'];
 		$secretKey = $baiduaudio_options['baidu_secretKey'];
 		$api = 'https://openapi.baidu.com/oauth/2.0/token?grant_type=client_credentials&client_id=' . $apiKey . '&client_secret=' . $secretKey;
-		// $result = file_get_contents($api);
 		$api = wp_remote_get( $api );
 		$result = wp_remote_retrieve_body( $response );
-		// $result = json_decode($result, true);
 		if ($result['access_token']) {
 			hylsay_text_reading_set_cache('baidu_Audio_token', $result, $result[expires_in] * 0.9);
 		}
