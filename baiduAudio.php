@@ -196,17 +196,17 @@ if ( is_admin() )
 
 function add_hylsay_text_reading_js($hook) {
  
-	$my_js_ver  = date("ymd-Gis", filemtime( plugin_dir_path( __FILE__ ) . 'baiduAudio.js' ));
-	$my_js_query  = date("ymd-Gis", filemtime( plugin_dir_path( __FILE__ ) . 'jquery.min.js' ));
-	$my_css_ver = date("ymd-Gis", filemtime( plugin_dir_path( __FILE__ ) . 'baiduAudio.css' ));
-	$my_css_fontawesome = date("ymd-Gis", filemtime( plugin_dir_path( __FILE__ ) . 'font-awesome-4.7.0/css/font-awesome.min.css' ));
+	$my_js_ver  = date("ymd-Gis", filemtime( plugin_dir_path( __FILE__ ) . 'js/baiduAudio.js' ));
+	$my_js_query  = date("ymd-Gis", filemtime( plugin_dir_path( __FILE__ ) . 'js/jquery.min.js' ));
+	$my_css_ver = date("ymd-Gis", filemtime( plugin_dir_path( __FILE__ ) . 'css/baiduAudio.css' ));
+	$my_css_fontawesome = date("ymd-Gis", filemtime( plugin_dir_path( __FILE__ ) . 'css/font-awesome-4.7.0/css/font-awesome.min.css' ));
 	 
-	wp_enqueue_script( 'query_js', plugins_url( 'jquery.min.js', __FILE__ ), array(), $my_js_query );
-    wp_enqueue_script( 'baiduAudio_js', plugins_url( 'baiduAudio.js', __FILE__ ), array(), $my_js_ver );
-    wp_register_style( 'baiduAudio_css',    plugins_url( 'baiduAudio.css',    __FILE__ ), false,   $my_css_ver );
+	wp_enqueue_script( 'query_js', plugins_url( 'js/jquery.min.js', __FILE__ ), array(), $my_js_query );
+    wp_enqueue_script( 'baiduAudio_js', plugins_url( 'js/baiduAudio.js', __FILE__ ), array(), $my_js_ver );
+    wp_register_style( 'baiduAudio_css',    plugins_url( 'css/baiduAudio.css',    __FILE__ ), false,   $my_css_ver );
 	wp_enqueue_style ( 'baiduAudio_css' );
 	
-	wp_register_style( 'fontawesome_css',    plugins_url( 'font-awesome-4.7.0/css/font-awesome.min.css',    __FILE__ ), false,   $my_css_fontawesome );
+	wp_register_style( 'fontawesome_css',    plugins_url( 'css/font-awesome-4.7.0/css/font-awesome.min.css',    __FILE__ ), false,   $my_css_fontawesome );
     wp_enqueue_style ( 'fontawesome_css' );
  
 }
