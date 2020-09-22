@@ -3,7 +3,7 @@
 Plugin Name: Hylsay Text Reading
 Plugin URI: https://aoaoao.info/hylsay-text-reading
 Description: A plug-in that can read
-Version: 1.1.0
+Version: 2.0
 Author: hylsay
 Author URI: http://aoaoao.info
 */
@@ -196,12 +196,18 @@ if ( is_admin() )
 
 function add_hylsay_text_reading_js($hook) {
  
-    $my_js_ver  = date("ymd-Gis", filemtime( plugin_dir_path( __FILE__ ) . 'baiduAudio.js' ));
-    $my_css_ver = date("ymd-Gis", filemtime( plugin_dir_path( __FILE__ ) . 'baiduAudio.css' ));
-     
+	$my_js_ver  = date("ymd-Gis", filemtime( plugin_dir_path( __FILE__ ) . 'baiduAudio.js' ));
+	$my_js_query  = date("ymd-Gis", filemtime( plugin_dir_path( __FILE__ ) . 'jquery.min.js' ));
+	$my_css_ver = date("ymd-Gis", filemtime( plugin_dir_path( __FILE__ ) . 'baiduAudio.css' ));
+	$my_css_fontawesome = date("ymd-Gis", filemtime( plugin_dir_path( __FILE__ ) . 'font-awesome-4.7.0/css/font-awesome.min.css' ));
+	 
+	wp_enqueue_script( 'query_js', plugins_url( 'jquery.min.js', __FILE__ ), array(), $my_js_query );
     wp_enqueue_script( 'baiduAudio_js', plugins_url( 'baiduAudio.js', __FILE__ ), array(), $my_js_ver );
     wp_register_style( 'baiduAudio_css',    plugins_url( 'baiduAudio.css',    __FILE__ ), false,   $my_css_ver );
-    wp_enqueue_style ( 'baiduAudio_css' );
+	wp_enqueue_style ( 'baiduAudio_css' );
+	
+	wp_register_style( 'fontawesome_css',    plugins_url( 'font-awesome-4.7.0/css/font-awesome.min.css',    __FILE__ ), false,   $my_css_fontawesome );
+    wp_enqueue_style ( 'fontawesome_css' );
  
 }
 add_action('wp_enqueue_scripts', 'add_hylsay_text_reading_js');
@@ -211,58 +217,26 @@ add_action('rest_api_init', function () {
 	register_rest_route('hylsaytextreading', '/hylsay_text_reading_get_baiduAudio_token/', array('methods' => 'get', 'callback' => 'hylsay_text_reading_get_baiduAudio_token',));
 });
 
-function hylsay_text_reading_get_cache($name) {
-    $allCache = get_option('pd_cache');
-    if (!$allCache) {
-        return false;
-    }
-    if (!$allCache[$name]) {
-        return false;
-    } else {
-        $time = $allCache[$name]['expire'];
-        if ($time > time() & $time - time() < 2592000) {
-            return $allCache[$name]['data'];
-        } else {
-            hylsay_text_reading_del_cache($name);
-            return false;
-        }
-    }
-}
-
-function hylsay_text_reading_del_cache($name) {
-    $allCache = get_option('pd_cache');
-    unset($allCache[$name]);
-    update_option('pd_cache', $allCache);
-}
-
-function hylsay_text_reading_set_cache($name, $data, $expire) {
-    $allCache = get_option('pd_cache');
-    if (!$allCache) {
-        $allCache = array();
-    }
-    $allCache[$name] = array('data' => $data, 'expire' => time() + $expire);
-    update_option('pd_cache', $allCache);
-}
-
 function hylsay_text_reading_get_baiduAudio_token() {
-	$result = hylsay_text_reading_get_cache('baidu_Audio_token');
-	$baiduaudio_options = get_option( 'baiduaudio_option_name' );
-	if ($result == false) {
-		$apiKey = $baiduaudio_options['baidu_apiKey'];
-		$secretKey = $baiduaudio_options['baidu_secretKey'];
-		$api = 'https://openapi.baidu.com/oauth/2.0/token?grant_type=client_credentials&client_id=' . $apiKey . '&client_secret=' . $secretKey;
-		$api = wp_remote_get( $api );
-
-		$result = wp_remote_retrieve_body( $api );
-		if ($result['access_token']) {
-			hylsay_text_reading_set_cache('baidu_Audio_token', $result, $result[expires_in] * 0.9);
-		}
-	}
 	
+	$baiduaudio_options = get_option( 'baiduaudio_option_name' );
+	$apiKey = $baiduaudio_options['baidu_apiKey'];
+
+	$secretKey = $baiduaudio_options['baidu_secretKey'];
+	$api = 'https://openapi.baidu.com/oauth/2.0/token?grant_type=client_credentials&client_id=' . $apiKey . '&client_secret=' . $secretKey;
+	$api = wp_remote_get( $api );
+
+	$result = wp_remote_retrieve_body( $api );
+	$result_obj = json_decode($result);
+
+	$access_token = $result_obj->access_token;
+	$expires_in = $result_obj->expires_in;
+	$session_key = $result_obj->session_key;
+
 	$getper = $baiduaudio_options['select_shengyin'];
 	$getposttag = $baiduaudio_options['baiduaudio_post_divtag'];
 	$getpingbitag = $baiduaudio_options['baiduaudio_pingbi_divtag'];
-	$return = array('access_token' => $result[access_token], 'session_key' => $result[session_key], 'spd' =>  5, 'pit' =>  5, 'per' =>  $getper,'yuedu_posttag' => $getposttag,'yuedu_pingbitag' => $getpingbitag);
+	$return = array('access_token' => $access_token, 'session_key' => $session_key, 'spd' =>  5, 'pit' =>  5, 'per' =>  $getper,'yuedu_posttag' => $getposttag,'yuedu_pingbitag' => $getpingbitag);
 	return $return;
 }
 
