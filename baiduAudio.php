@@ -221,12 +221,18 @@ function hylsay_text_reading_get_cache($name) {
     } else {
         $time = $allCache[$name]['expire'];
         if ($time > time() & $time - time() < 2592000) {
-            return $allCache[$name]['data'];;
+            return $allCache[$name]['data'];
         } else {
-            del_cache($name);
+            hylsay_text_reading_del_cache($name);
             return false;
         }
     }
+}
+
+function hylsay_text_reading_del_cache($name) {
+    $allCache = get_option('pd_cache');
+    unset($allCache[$name]);
+    update_option('pd_cache', $allCache);
 }
 
 function hylsay_text_reading_set_cache($name, $data, $expire) {
