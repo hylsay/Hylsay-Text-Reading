@@ -11,3 +11,6 @@
 2.阅读屏蔽。默认是#baiduAudioPlayer,iframe,[anti],[copy],pre,img,table,.modal等，如果不想阅读某个div中的内容，就把该div对应的标签填写进去，例如：.ads-google,.announce，如果需要屏蔽的较多切记使用逗号（英文半角）分开。
 
 后续发现问题再做更新。
+
+- 2020-9-22
+升级2.0版本，修改若干BUG。
