@@ -8,6 +8,8 @@
 
 强烈建议通过Wordpress插件市场搜索安装，方便及时更新。
 
+预览地址：https://aoaoao.info/841.html
+
 ## 插件设置：
 
 1.阅读范围。默认是article，如果不想阅读标题等信息，请填写正文div标签，例如：.entry-content。
