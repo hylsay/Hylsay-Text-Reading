@@ -37,3 +37,12 @@
 	opacity: .6;
 	visibility: visible
 }
+.hylsay-text-r-info {
+	padding: 1px 6px;
+    font-size: 14px;
+    color: #92683c;
+	display:none;
+}
+.hylsay-text-r-info.active{
+	display:block;
+}

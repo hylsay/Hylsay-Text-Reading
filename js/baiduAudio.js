@@ -10,7 +10,8 @@ jQuery(function($) {
                 baiduAudio.tokenData = data;
                 baiduAudio.makePlayer();
             }).fail(function() {
-                console.log('Token换取失败，可能是WordPress RestAPI被关闭导致！');
+                
+                $(".hylsay-text-r-info").text("** Token换取失败，可能是RestAPI被关闭导致或后台参数配置错误！**")
             })
         },
         makePlayer: function() {
@@ -37,6 +38,7 @@ jQuery(function($) {
                 if (textArray < 1) {
                     return false;
                 }
+
                 var tok = baiduAudio.tokenData.access_token,
                 cuid = baiduAudio.tokenData.session_key,
                 spd = baiduAudio.tokenData.spd,
@@ -76,6 +78,7 @@ jQuery(function($) {
             $('#baiduAudioPlayer .playBtn').removeClass('active');
             $('#baiduAudioPlayer .pauseBtn').addClass('active');
             $('#baiduAudioPlayer .stopBtn').addClass('active');
+            $('.hylsay-text-r-info').addClass('active');
             baiduAudio.audio.play();
         },
         pause: function() {
@@ -107,8 +110,9 @@ jQuery(function($) {
                 });
 
                 if ($(newDom).html() == null){
-                    console.log('阅读范围设置错误，未获取到文本信息！');
-                }else{
+                    $(".hylsay-text-r-info").text("** 阅读范围设置错误，未获取到文本信息！**")
+                    return '';
+                } else {
                     
                     text = $(newDom).html().replace(/&nbsp;/g, "");
                     textArr = text.split(/。/g);
@@ -124,6 +128,7 @@ jQuery(function($) {
                     }
                     result.push(aAudioText);
                     return result;
+                    
                 }
                 
             }

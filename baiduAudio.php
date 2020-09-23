@@ -243,7 +243,7 @@ function hylsay_text_reading_get_baiduAudio_token() {
 function hylsay_text_reading_baidu_ai_audio_content($content) {
 	
 	if (is_single()) {
-		return '<div class="baiduAudioWrap"></div>' . $content;
+		return '<div class="baiduAudioWrap"></div><span class="hylsay-text-r-info"></span>' . $content;
 	}
 	return $content;
 }
