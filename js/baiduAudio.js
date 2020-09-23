@@ -10,7 +10,7 @@ jQuery(function($) {
                 baiduAudio.tokenData = data;
                 baiduAudio.makePlayer();
             }).fail(function() {
-                
+                $('.hylsay-text-r-info').addClass('active');
                 $(".hylsay-text-r-info").text("** Token换取失败，可能是RestAPI被关闭导致或后台参数配置错误！**")
             })
         },
@@ -78,7 +78,6 @@ jQuery(function($) {
             $('#baiduAudioPlayer .playBtn').removeClass('active');
             $('#baiduAudioPlayer .pauseBtn').addClass('active');
             $('#baiduAudioPlayer .stopBtn').addClass('active');
-            $('.hylsay-text-r-info').addClass('active');
             baiduAudio.audio.play();
         },
         pause: function() {
@@ -110,6 +109,7 @@ jQuery(function($) {
                 });
 
                 if ($(newDom).html() == null){
+                    $('.hylsay-text-r-info').addClass('active');
                     $(".hylsay-text-r-info").text("** 阅读范围设置错误，未获取到文本信息！**")
                     return '';
                 } else {
