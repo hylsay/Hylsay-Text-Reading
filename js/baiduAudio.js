@@ -105,6 +105,7 @@ jQuery(function($) {
                     var content = $(this).contents();
                     $(this).replaceWith(content);
                 });
+                
                 text = $(newDom).html().replace(/&nbsp;/g, "");
                 textArr = text.split(/。/g);
                 var aAudioText = '';
