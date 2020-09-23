@@ -105,21 +105,27 @@ jQuery(function($) {
                     var content = $(this).contents();
                     $(this).replaceWith(content);
                 });
-                
-                text = $(newDom).html().replace(/&nbsp;/g, "");
-                textArr = text.split(/。/g);
-                var aAudioText = '';
-                for (var i = 0; i < textArr.length; i++) {
-                    if (aAudioText.length + textArr[i].length < 500) {
-                        aAudioText += textArr[i] + '。';
-                    } else {
-                        result.push(aAudioText);
-                        aAudioText = '';
-                        aAudioText += textArr[i] + '。';
+
+                if ($(newDom).html() == null){
+                    console.log('阅读范围设置错误，未获取到文本信息！');
+                }else{
+                    
+                    text = $(newDom).html().replace(/&nbsp;/g, "");
+                    textArr = text.split(/。/g);
+                    var aAudioText = '';
+                    for (var i = 0; i < textArr.length; i++) {
+                        if (aAudioText.length + textArr[i].length < 500) {
+                            aAudioText += textArr[i] + '。';
+                        } else {
+                            result.push(aAudioText);
+                            aAudioText = '';
+                            aAudioText += textArr[i] + '。';
+                        }
                     }
+                    result.push(aAudioText);
+                    return result;
                 }
-                result.push(aAudioText);
-                return result;
+                
             }
             
         }
