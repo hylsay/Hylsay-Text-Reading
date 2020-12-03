@@ -51,7 +51,7 @@ jQuery(function($) {
                 }
                 baiduAudio.audio.preload = true;
                 baiduAudio.audio.controls = true;
-                baiduAudio.audio.muted = true;
+                baiduAudio.audio.muted = false;
                 baiduAudio.audio.src = baiduAudio.audioArray.pop();
                 baiduAudio.audio.addEventListener('ended', baiduAudio.playEndedHandler, false);
                 baiduAudio.audio.loop = false;
