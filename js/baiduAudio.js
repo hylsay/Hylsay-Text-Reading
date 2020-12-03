@@ -63,7 +63,6 @@ jQuery(function($) {
         },
         playEndedHandler: function() {
             if (baiduAudio.audioArray.length > 0) {
-                baiduAudio.audio.muted = false;
                 baiduAudio.audio.src = baiduAudio.audioArray.pop();
                 baiduAudio.audio.play();
             } else {
