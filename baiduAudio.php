@@ -45,9 +45,11 @@ class HylsayTextReadingPlugin {
 			<p><b>插件介绍：</b></p>
 			<p>本插件是基于百度语音合成开发，需要自行申请百度语音合成APIkey，地址：<a href="http://ai.baidu.com/tech/speech/" target="_blank">http://ai.baidu.com/tech/speech/</a></p>
 			<p><b>插件设置：</b></p>
-			<p>1.阅读范围。请填写正文div标签，例如：.entry-content。</p>
-			<p>2.阅读屏蔽。如果不想阅读某个div中的内容，就把该div对应的标签填写进去，例如：.ads-google,.announce，如果需要屏蔽的较多切记使用逗号（英文半角）分开。</p>
-			<p>3.声音类型。如果你购买的是基础音库，就选择基础语音对应的类型；如果是精品音库，就选择精品音库对应的类型。</p>
+			<p>1.初始设置。语速、音调、音量这三项，取值0-15，不填默认为5。</p>
+			<p>2.声音类型。如果你购买的是基础音库，就选择基础语音对应的类型；如果是精品音库，就选择精品音库对应的类型。</p>
+			<p>3.阅读范围。请填写正文div标签，例如：.entry-content。</p>
+			<p>4.阅读屏蔽。如果不想阅读某个div中的内容，就把该div对应的标签填写进去，例如：.ads-google,.announce，如果需要屏蔽的较多切记使用逗号（英文半角）分开。</p>
+			
             <?php settings_errors(); ?>
 
 			<form method="post" action="options.php">
@@ -92,6 +94,30 @@ class HylsayTextReadingPlugin {
 		);
 
 		add_settings_field(
+			'baidu_spd', // id
+			'语速', // title
+			array( $this, 'baidu_spd_callback' ), // callback
+			'baiduaudio-admin', // page
+			'baiduaudio_setting_section' // section
+		);
+
+		add_settings_field(
+			'baidu_pit', // id
+			'音调', // title
+			array( $this, 'baidu_pit_callback' ), // callback
+			'baiduaudio-admin', // page
+			'baiduaudio_setting_section' // section
+		);
+
+		add_settings_field(
+			'baidu_vol', // id
+			'音量', // title
+			array( $this, 'baidu_vol_callback' ), // callback
+			'baiduaudio-admin', // page
+			'baiduaudio_setting_section' // section
+		);
+
+		add_settings_field(
 			'select_shengyin', // id
 			'选择声音类型', // title
 			array( $this, 'select_shengyin_callback' ), // callback
@@ -125,6 +151,19 @@ class HylsayTextReadingPlugin {
 
 		if ( isset( $input['baidu_secretKey'] ) ) {
 			$sanitary_values['baidu_secretKey'] = sanitize_text_field( $input['baidu_secretKey'] );
+		}
+
+		// 语速
+		if ( isset( $input['baidu_spd'] ) ) {
+			$sanitary_values['baidu_spd'] = sanitize_text_field( $input['baidu_spd'] );
+		}
+		// 音调
+		if ( isset( $input['baidu_pit'] ) ) {
+			$sanitary_values['baidu_pit'] = sanitize_text_field( $input['baidu_pit'] );
+		}
+		//音量
+		if ( isset( $input['baidu_vol'] ) ) {
+			$sanitary_values['baidu_vol'] = sanitize_text_field( $input['baidu_vol'] );
 		}
 
 		if ( isset( $input['select_shengyin'] ) ) {
@@ -195,6 +234,29 @@ class HylsayTextReadingPlugin {
 			isset( $this->baiduaudio_options['baidu_secretKey'] ) ? esc_attr( $this->baiduaudio_options['baidu_secretKey']) : ''
 		);
 	}
+	//语速
+	public function baidu_spd_callback() {
+		printf(
+			'<input class="regular-text" type="text" name="baiduaudio_option_name[baidu_spd]" id="baidu_spd" value="%s" placeholder="取值0-15，不填默认为5，中语速">',
+			isset( $this->baiduaudio_options['baidu_spd'] ) ? esc_attr( $this->baiduaudio_options['baidu_spd']) : ''
+		);
+	}
+
+	//音调
+	public function baidu_pit_callback() {
+		printf(
+			'<input class="regular-text" type="text" name="baiduaudio_option_name[baidu_pit]" id="baidu_pit" value="%s" placeholder="取值0-15，不填默认为5，中语调">',
+			isset( $this->baiduaudio_options['baidu_pit'] ) ? esc_attr( $this->baiduaudio_options['baidu_pit']) : ''
+		);
+	}
+
+	//音量
+	public function baidu_vol_callback() {
+		printf(
+			'<input class="regular-text" type="text" name="baiduaudio_option_name[baidu_vol]" id="baidu_vol" value="%s" placeholder="取值0-15，不填默认为5，中音量">',
+			isset( $this->baiduaudio_options['baidu_vol'] ) ? esc_attr( $this->baiduaudio_options['baidu_vol']) : ''
+		);
+	}
 
 	public function baiduaudio_post_divtag_callback() {
 		printf(
@@ -243,8 +305,11 @@ function hylsay_text_reading_get_baiduAudio_token() {
 	
 	$baiduaudio_options = get_option( 'baiduaudio_option_name' );
 	$apiKey = $baiduaudio_options['baidu_apiKey'];
-
 	$secretKey = $baiduaudio_options['baidu_secretKey'];
+	$baidu_spd = $baiduaudio_options['baidu_spd']?:5;
+	$baidu_pit = $baiduaudio_options['baidu_pit']?:5;
+	$baidu_vol = $baiduaudio_options['baidu_vol']?:5;
+
 	$api = 'https://openapi.baidu.com/oauth/2.0/token?grant_type=client_credentials&client_id=' . $apiKey . '&client_secret=' . $secretKey;
 	$api = wp_remote_get( $api );
 
@@ -258,7 +323,7 @@ function hylsay_text_reading_get_baiduAudio_token() {
 	$getper = $baiduaudio_options['select_shengyin'];
 	$getposttag = $baiduaudio_options['baiduaudio_post_divtag'];
 	$getpingbitag = $baiduaudio_options['baiduaudio_pingbi_divtag'];
-	$return = array('access_token' => $access_token, 'session_key' => $session_key, 'spd' =>  5, 'pit' =>  5, 'per' =>  $getper,'yuedu_posttag' => $getposttag,'yuedu_pingbitag' => $getpingbitag);
+	$return = array('access_token' => $access_token, 'session_key' => $session_key, 'spd' =>  $baidu_spd, 'pit' =>  $baidu_pit, 'vol' => $baidu_vol, 'per' =>  $getper,'yuedu_posttag' => $getposttag,'yuedu_pingbitag' => $getpingbitag);
 	return $return;
 }
 
