@@ -45,8 +45,9 @@ class HylsayTextReadingPlugin {
 			<p><b>插件介绍：</b></p>
 			<p>本插件是基于百度语音合成开发，需要自行申请百度语音合成APIkey，地址：<a href="http://ai.baidu.com/tech/speech/" target="_blank">http://ai.baidu.com/tech/speech/</a></p>
 			<p><b>插件设置：</b></p>
-			<p>1.阅读范围。默认是article，如果不想阅读标题等信息，请填写正文div标签，例如：.entry-content。</p>
-			<p>2.阅读屏蔽。默认是#baiduAudioPlayer,iframe,[anti],[copy],pre,img,table,.modal等，如果不想阅读某个div中的内容，就把该div对应的标签填写进去，例如：.ads-google,.announce，如果需要屏蔽的较多切记使用逗号（英文半角）分开。</p>
+			<p>1.阅读范围。请填写正文div标签，例如：.entry-content。</p>
+			<p>2.阅读屏蔽。如果不想阅读某个div中的内容，就把该div对应的标签填写进去，例如：.ads-google,.announce，如果需要屏蔽的较多切记使用逗号（英文半角）分开。</p>
+			<p>3.声音类型。如果你购买的是基础音库，就选择基础语音对应的类型；如果是精品音库，就选择精品音库对应的类型。</p>
             <?php settings_errors(); ?>
 
 			<form method="post" action="options.php">
