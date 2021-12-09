@@ -3,7 +3,7 @@
 Plugin Name: Hylsay Text Reading
 Plugin URI: https://aoaoao.info/hylsay-text-reading
 Description: A plug-in that can read
-Version: 2.1.1
+Version: 3.0
 Author: hylsay
 Author URI: http://aoaoao.info
 */
@@ -149,14 +149,35 @@ class HylsayTextReadingPlugin {
 	public function select_shengyin_callback() {
 		?> <fieldset>
 		<?php $checked = ( isset( $this->baiduaudio_options['select_shengyin'] ) && $this->baiduaudio_options['select_shengyin'] === '0' ) ? 'checked' : '' ; ?>
-		<label for="select_shengyin-0"><input type="radio" name="baiduaudio_option_name[select_shengyin]" id="select_shengyin-0" value="0" checked > 标准女声</label><br>
+		<label for="select_shengyin-0"><input type="radio" name="baiduaudio_option_name[select_shengyin]" id="select_shengyin-0" value="0" checked > 基础音库-度小美</label><br>
 		<?php $checked = ( isset( $this->baiduaudio_options['select_shengyin'] ) && $this->baiduaudio_options['select_shengyin'] === '1' ) ? 'checked' : '' ; ?>
-		<label for="select_shengyin-1"><input type="radio" name="baiduaudio_option_name[select_shengyin]" id="select_shengyin-1" value="1" <?php echo $checked; ?>> 标准男声</label><br>
+		<label for="select_shengyin-1"><input type="radio" name="baiduaudio_option_name[select_shengyin]" id="select_shengyin-1" value="1" <?php echo $checked; ?>> 基础音库-度小宇</label><br>
 		<?php $checked = ( isset( $this->baiduaudio_options['select_shengyin'] ) && $this->baiduaudio_options['select_shengyin'] === '4' ) ? 'checked' : '' ; ?>
-		<label for="select_shengyin-3"><input type="radio" name="baiduaudio_option_name[select_shengyin]" id="select_shengyin-3" value="4" <?php echo $checked; ?>> 情感女声</label><br>
+		<label for="select_shengyin-3"><input type="radio" name="baiduaudio_option_name[select_shengyin]" id="select_shengyin-3" value="4" <?php echo $checked; ?>> 基础音库-度丫丫</label><br>
 		<?php $checked = ( isset( $this->baiduaudio_options['select_shengyin'] ) && $this->baiduaudio_options['select_shengyin'] === '3' ) ? 'checked' : '' ; ?>
-		<label for="select_shengyin-2"><input type="radio" name="baiduaudio_option_name[select_shengyin]" id="select_shengyin-2" value="3" <?php echo $checked; ?>> 情感男声</label>
+		<label for="select_shengyin-2"><input type="radio" name="baiduaudio_option_name[select_shengyin]" id="select_shengyin-2" value="3" <?php echo $checked; ?>> 基础音库-度逍遥</label><br>
 		
+		<?php $checked = ( isset( $this->baiduaudio_options['select_shengyin'] ) && $this->baiduaudio_options['select_shengyin'] === '5003' ) ? 'checked' : '' ; ?>
+		<label for="select_shengyin-4"><input type="radio" name="baiduaudio_option_name[select_shengyin]" id="select_shengyin-4" value="5003" <?php echo $checked; ?>> 精品音库-度逍遥</label><br>
+
+		<?php $checked = ( isset( $this->baiduaudio_options['select_shengyin'] ) && $this->baiduaudio_options['select_shengyin'] === '5118' ) ? 'checked' : '' ; ?>
+		<label for="select_shengyin-5"><input type="radio" name="baiduaudio_option_name[select_shengyin]" id="select_shengyin-5" value="5118" <?php echo $checked; ?>> 精品音库-度小鹿</label><br>
+		
+		<?php $checked = ( isset( $this->baiduaudio_options['select_shengyin'] ) && $this->baiduaudio_options['select_shengyin'] === '106' ) ? 'checked' : '' ; ?>
+		<label for="select_shengyin-6"><input type="radio" name="baiduaudio_option_name[select_shengyin]" id="select_shengyin-6" value="106" <?php echo $checked; ?>> 精品音库-度博文</label><br>
+		
+		<?php $checked = ( isset( $this->baiduaudio_options['select_shengyin'] ) && $this->baiduaudio_options['select_shengyin'] === '110' ) ? 'checked' : '' ; ?>
+		<label for="select_shengyin-7"><input type="radio" name="baiduaudio_option_name[select_shengyin]" id="select_shengyin-7" value="110" <?php echo $checked; ?>> 精品音库-度小童</label><br>
+		
+		<?php $checked = ( isset( $this->baiduaudio_options['select_shengyin'] ) && $this->baiduaudio_options['select_shengyin'] === '111' ) ? 'checked' : '' ; ?>
+		<label for="select_shengyin-8"><input type="radio" name="baiduaudio_option_name[select_shengyin]" id="select_shengyin-8" value="111" <?php echo $checked; ?>> 精品音库-度小萌</label><br>
+		
+		<?php $checked = ( isset( $this->baiduaudio_options['select_shengyin'] ) && $this->baiduaudio_options['select_shengyin'] === '103' ) ? 'checked' : '' ; ?>
+		<label for="select_shengyin-9"><input type="radio" name="baiduaudio_option_name[select_shengyin]" id="select_shengyin-9" value="103" <?php echo $checked; ?>> 精品音库-度米朵</label><br>
+		
+		<?php $checked = ( isset( $this->baiduaudio_options['select_shengyin'] ) && $this->baiduaudio_options['select_shengyin'] === '5' ) ? 'checked' : '' ; ?>
+		<label for="select_shengyin-10"><input type="radio" name="baiduaudio_option_name[select_shengyin]" id="select_shengyin-10" value="5" <?php echo $checked; ?>> 精品音库-度小娇</label>
+
 		</fieldset> <?php
 	}
 
