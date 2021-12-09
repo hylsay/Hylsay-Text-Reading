@@ -230,7 +230,7 @@ class HylsayTextReadingPlugin {
 
 	public function baidu_secretKey_callback() {
 		printf(
-			'<input class="regular-text" type="text" name="baiduaudio_option_name[baidu_secretKey]" id="baidu_secretKey" value="%s">',
+			'<input class="regular-text" type="password" name="baiduaudio_option_name[baidu_secretKey]" id="baidu_secretKey" value="%s">',
 			isset( $this->baiduaudio_options['baidu_secretKey'] ) ? esc_attr( $this->baiduaudio_options['baidu_secretKey']) : ''
 		);
 	}
