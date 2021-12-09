@@ -5,23 +5,35 @@ Donate link:
 Requires at least: 5.2
 Tested up to: 5.5.1
 Requires PHP: 5.6
-Stable tag: 3.0
+Stable tag: 3.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A plug-in that can read
+这是一个可以自动阅读文章内容的插件，小说网站的福音。
 
 == Description ==
-Hylsay text reading is independently developed by hylsay, based on GPL open source protocol and relying on Baidu voice synthesis API.
 
-Hylsay text reading is a plug-in that can read. When we enable the plug-in, the plug-in will automatically add a play button in each article to play the text content. You can also choose different voice independently.
+这是一个可以自动阅读文章内容的插件，小说网站的福音。本插件是基于百度语音合成开发，需要自行申请百度语音合成APIkey，地址：http://ai.baidu.com/tech/speech/
+
+只需要4步操作：
+
+1.初始设置。语速、音调、音量这三项，取值0-15，不填默认为5。
+
+2.声音类型。如果你购买的是基础音库，就选择基础语音对应的类型；如果是精品音库，就选择精品音库对应的类型。
+
+3.阅读范围。请填写正文div标签，例如：.entry-content。
+
+4.阅读屏蔽。如果不想阅读某个div中的内容，就把该div对应的标签填写进去，例如：.ads-google,.announce，如果需要屏蔽的较多切记使用逗号（英文半角）分开。
 
 == Installation ==
-1.we have to be there http://ai.baidu.com/tech/speech/ Apply for an apikey, and fill in the apikey and secretkey in the corresponding position through the plug-in settings.
 
-2.Reading range. The default is "article". If you don't want to read the title and other information, please fill in the div tag of the body, for example: "entry content".
+1.初始设置。语速、音调、音量这三项，取值0-15，不填默认为5。
 
-3.Read filter. The default is "ා Baidu audioplayer, iframe, [anti], [copy], pre, IMG, table,. Modal". If you don't want to read the content of a div, you can fill in the corresponding tag of the div, for example, ". Ads Google,. Announcement". If you need to filter more, be sure to separate them with commas (half English).
+2.声音类型。如果你购买的是基础音库，就选择基础语音对应的类型；如果是精品音库，就选择精品音库对应的类型。
+
+3.阅读范围。请填写正文div标签，例如：.entry-content。
+
+4.阅读屏蔽。如果不想阅读某个div中的内容，就把该div对应的标签填写进去，例如：.ads-google,.announce，如果需要屏蔽的较多切记使用逗号（英文半角）分开。
 
 == Frequently Asked Questions ==
 
