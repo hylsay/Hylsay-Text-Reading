@@ -62,7 +62,7 @@ class HylsayTextReadingPlugin {
 			<hr>
 			<p>如果您觉得本插件还不错，并且方便了您，望多多给予支持，开发不易呀，谢谢！</p>
 			
-			<img src="https://github.com/hylsay/Hylsay-Text-Reading/blob/master/img/wechatalipay.png" alt="打赏是一种美德" width="350px" >
+			<img src="<?php echo plugins_url('',__FILE__); ?>/img/wechatalipay.png" alt="打赏是一种美德" width="350px" >
 		</div>
 	<?php }
 
