@@ -3,7 +3,7 @@
 Plugin Name: Hylsay Text Reading
 Plugin URI: https://aoaoao.info/hylsay-text-reading
 Description: A plug-in that can read
-Version: 3.1.1
+Version: 3.1.2
 Author: hylsay
 Author URI: http://aoaoao.info
 */
