@@ -54,7 +54,7 @@ jQuery(function ($) {
                 baiduAudio.audio.src = baiduAudio.audioArray.pop();
                 baiduAudio.audio.addEventListener('ended', baiduAudio.playEndedHandler, false);
                 baiduAudio.audio.loop = false;
-                console.log('语音合成中，请稍后...');
+                console.log('插件地址：https://aoaoao.info 语音合成中，请稍后...');
                 return true;
             } else {
                 return false;
