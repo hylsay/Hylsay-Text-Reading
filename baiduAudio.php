@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Hylsay Text Reading
-Plugin URI: https://aoaoao.info/hylsay-text-reading
+Plugin URI: https://hugo.aoaoao.info/post/hylsay-text-reading/
 Description: A plug-in that can read
 Version: 3.1.2
 Author: hylsay
-Author URI: http://aoaoao.info
+Author URI: https://hugo.aoaoao.info
 */
 
 function hylsay_text_reading_admin_mycss() {
@@ -44,6 +44,7 @@ class HylsayTextReadingPlugin {
 			<h2>文章阅读插件设置</h2>
 			<p><b>插件介绍：</b></p>
 			<p>本插件是基于百度语音合成开发，需要自行申请百度语音合成APIkey，地址：<a href="http://ai.baidu.com/tech/speech/" target="_blank">http://ai.baidu.com/tech/speech/</a></p>
+			<p>问题反馈：<a href="https://hugo.aoaoao.info/post/hylsay-text-reading/" target="_blank">https://hugo.aoaoao.info/post/hylsay-text-reading/</a></p>
 			<p><b>插件设置：</b></p>
 			<p>1.初始设置。语速、音调、音量这三项，取值0-15，不填默认为5。</p>
 			<p>2.声音类型。如果你购买的是基础音库，就选择基础语音对应的类型；如果是精品音库，就选择精品音库对应的类型。</p>
