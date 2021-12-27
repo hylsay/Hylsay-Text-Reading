@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Hylsay Text Reading
-Plugin URI: https://hugo.aoaoao.info/post/hylsay-text-reading/
+Plugin URI: https://blog.aoaoao.info/post/wordpress-plugin-hylsay-text-reading/
 Description: A plug-in that can read
 Version: 3.1.2
 Author: hylsay
-Author URI: https://hugo.aoaoao.info
+Author URI: https://blog.aoaoao.info
 */
 
 function hylsay_text_reading_admin_mycss() {
