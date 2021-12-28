@@ -43,10 +43,11 @@ jQuery(function ($) {
                     cuid = baiduAudio.tokenData.session_key,
                     spd = baiduAudio.tokenData.spd,
                     pit = baiduAudio.tokenData.pit,
+                    vol = baiduAudio.tokenData.vol,
                     per = baiduAudio.tokenData.per;
                 baiduAudio.audioArray = [];
                 for (var i = 0; i < textArray.length; i++) {
-                    var address = 'https://tsn.baidu.com/text2audio?tex=' + encodeURIComponent(textArray[i]) + '&lan=zh&ctp=1&cuid=' + cuid + '&per=' + per + '&spd=' + spd + '&pit=' + pit + '&tok=' + tok;
+                    var address = 'https://tsn.baidu.com/text2audio?tex=' + encodeURIComponent(textArray[i]) + '&lan=zh&ctp=1&cuid=' + cuid + '&per=' + per + '&spd=' + spd + '&pit=' + pit + '&vol=' + vol + '&tok=' + tok;
                     baiduAudio.audioArray.unshift(address);
                 }
                 baiduAudio.audio.preload = true;
