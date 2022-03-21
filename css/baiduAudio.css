@@ -6,6 +6,7 @@
 	color: #fff;
 	border-radius: 100px;
 	margin-bottom: 10px;
+	box-shadow: -.1768rem -.1768rem .25rem hsla(0,0%,0%,.35),.1326rem .1326rem .3rem rgba(54,100,152,.15),inset 0 0 0 transparent,inset max(1px,.125rem) max(1px,.125rem) max(1px,.25rem) hsla(0,0%,100%,.6);
 }
 
 #baiduAudioPlayer i {
